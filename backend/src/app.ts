@@ -5,7 +5,7 @@ import { MongoClient, ServerApiVersion }  from 'mongodb';
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 const client = new MongoClient(process.env.MONGO_URI);
 client.connect().then(() => {console.log("connected")});
