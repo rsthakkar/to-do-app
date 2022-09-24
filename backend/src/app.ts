@@ -5,7 +5,6 @@ import { MongoClient, ServerApiVersion }  from 'mongodb';
 import { tasksRouter } from './routes/tasks.router';
 import { connectToDatabase } from './services/database.service';
 
-
 const app = express();
 const port = process.env.PORT;
 
