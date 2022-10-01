@@ -17,4 +17,19 @@ export default class TaskController extends BaseController {
             this.res.status(500).send(error.message);
         }
     }
+
+    public async addNewTask() {
+        try {
+            const newTask = this._req.body as Task;
+            console.log(newTask);
+            const result = await collections.tasks.insertOne(newTask);
+
+            result
+                ? this.res.status(201).send(`Successfully created a new task with id ${result.insertedId}`)
+                : this.res.status(500).send("Failed to create a new task.");
+        } catch (error) {
+            console.error(error);
+            this.res.status(400).send(error.message);
+        }
+    }
 }
