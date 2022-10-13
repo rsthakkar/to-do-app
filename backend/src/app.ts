@@ -1,9 +1,11 @@
 require("dotenv").config();
 
 import express from 'express';
-import { MongoClient, ServerApiVersion }  from 'mongodb'; 
+import { MongoClient, ServerApiVersion } from 'mongodb';
 import { tasksRouter } from './routes/tasks.router';
 import { connectToDatabase } from './services/database.service';
+import swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './swagger.json';
 
 const app = express();
 const port = process.env.PORT;
@@ -15,6 +17,9 @@ connectToDatabase()
         app.listen(port, () => {
             console.log(`Server started at http://localhost:${port}`);
         });
+
+        app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
     })
     .catch((error: Error) => {
         console.error("Database connection failed", error);
