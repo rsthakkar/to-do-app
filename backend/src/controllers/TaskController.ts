@@ -3,6 +3,22 @@ import { Request, Response } from "express";
 import { collections } from "../services/database.service";
 import { BaseController } from "./BaseController";
 
+export let taskSwagger = {
+    '/tasks': {
+        "get": {
+            "tags": [
+                "Tasks"
+            ],
+            "summary": "Get all cats in system",
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        }
+    }
+};
+
 export default class TaskController extends BaseController {
     constructor(_req: Request, res: Response) {
         super(_req, res);
@@ -33,3 +49,6 @@ export default class TaskController extends BaseController {
         }
     }
 }
+
+
+

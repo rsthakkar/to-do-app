@@ -5,7 +5,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 import { tasksRouter } from './routes/tasks.router';
 import { connectToDatabase } from './services/database.service';
 import swaggerUi from 'swagger-ui-express';
-import * as swaggerDocument from './swagger.json';
+import swaggerDocument from './swaggerJson';
 
 const app = express();
 const port = process.env.PORT;
